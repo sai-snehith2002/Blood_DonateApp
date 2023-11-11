@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="D:\7th Semester\Full Stack Dev Academics\Assignments\Assignment 6\blood_donation_app\static\js\script.js"></script>
+    <title>Blood Donation Website</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blood_bg.png') }}" alt="Blood Donation logo">
+                <p>Donate Blood</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                    <li><a href="{{ url_for('registration') }}" class="nav-link">Registration</a></li>
+                    <li><a href="{{ url_for('enquiry') }}" class="nav-link">Enquiry</a></li>
+                    <li><a href="https://www.amrita.edu" class="nav-link" target="_blank">About our Organization</a></li>
+                    <li><a href="https://www.amrita.edu/news/donate-blood-save-lives/" class="nav-link">Our Previous Drives</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-section dropdown">
+            <button class="dropbtn">
+              <img src="{{ url_for('static', filename='images/amrita_logo.png') }}" alt="User" class="profile-pic">Signin/Register
+            </button>
+            <div class="dropdown-content">
+              <a href="{{ url_for('login') }}">Sign In</a>
+              <a href="{{ url_for('registration') }}">Register</a>
+            </div>
+          </div>
+    </header>
+    
+    <div class="container reg-container">
+        <div class="headings">
+            <h1>Register as a Donor</h1>
+        </div>
+        <form action="{{ url_for('registration') }}" method="post" class="form">
+            <div class="form-group">
+                <label for="donorType">Register As:</label>
+                <select name="donorType" id="donorType" class="form-control" required>
+                    <option value="">Select Donor Type</option>
+                    <option value="regular">Regular Donor</option>
+                    <option value="oneTime">One-Time Donor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Donor Name (First Last):</label>
+                <input type="text" name="name" id="name" pattern="[A-Za-z]+\s[A-Za-z]+" title="Please enter your full name (First Last)" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" id="phone" pattern="[7-9][0-9]{9}" title="Please enter a valid 10-digit phone number not starting with 0-6" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="StateChoice">State:</label>
+                <select name="StateChoice" id="StateChoice" class="form-control" required>
+                    <option value="">Select Donating State</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="KR">Kerala</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="MH">Maharastra</option>
+                    <option value="TS">Telangana</option>
+                    <option value="GA">Goa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="aadhar">Aadhar Number (xxxx xxxx xxxx):</label>
+                <input type="text" name="aadhar" id="aadhar" pattern="\d{4}\s\d{4}\s\d{4}" title="Please enter a valid Aadhar number with spaces after every 4 digits" required>
+            </div>
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group:</label>
+                <select name="bloodGroup" id="bloodGroup" required>
+                    <option value="">Select Blood Group</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+                <label for="input">Enter the text you see:</label>
+                <div id="captcha" class="captcha"></div>
+                <input type="text" id="input" placeholder="Enter CAPTCHA text">
+
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+    const captchaText = generateRandomString(5);
+    document.getElementById("captcha").innerText = captchaText;
+
+
+    const form = document.getElementById("captchaForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const input = document.getElementById("input").value;
+
+        if (input === captchaText) {
+            alert("CAPTCHA verification succeeded.");
+            
+
+            alert("Thank you for submitting the form!");
+        } else {
+            alert("CAPTCHA verification failed. Try again.");
+        }
+    });
+});
+
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+
+    return result;
+}
+
+    </script>
+<footer>
+    <p>&copy; 2023 Blood Donation Organization</p>
+</footer>
+</body>
+</html>

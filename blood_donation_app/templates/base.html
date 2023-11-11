@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="D:\7th Semester\Full Stack Dev Academics\Assignments\Assignment 6\blood_donation_app\static\css\style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="D:\7th Semester\Full Stack Dev Academics\Assignments\Assignment 6\blood_donation_app\static\js\script.js"></script>
+    <title>Blood Donation Website</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="D:/7th Semester/Full Stack Dev Academics/Assignments/Assignment 6/images/blood_bg.png" alt="Blood Donation logo">
+                <p>Donate Blood</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-link">Home</a></li>
+                    <li><a href="registration.html" class="nav-link">Registration</a></li>
+                    <li><a href="enquiry.html" class="nav-link">Enquiry</a></li>
+                    <li><a href="https://www.amrita.edu" class="nav-link" target="_blank">About our Organization</a></li>
+                    <li><a href="https://www.amrita.edu/news/donate-blood-save-lives/" class="nav-link">Our Previous Drives</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-section">
+            <a href="login.html" class="nav-link">Sign In</a>
+            <a href="register.html" class="nav-link">Register</a>
+        </div>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Blood Donation Organization</p>
+    </footer>
+</body>
+</html>

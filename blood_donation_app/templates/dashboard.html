@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="D:\7th Semester\Full Stack Dev Academics\Assignments\Assignment 6\blood_donation_app\static\js\script.js"></script>
+    <title>Blood Donation Website</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blood_bg.png') }}" alt="Blood Donation logo">
+                <p>Donate Blood</p>
+            </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('enquiry') }}" class="nav-link">Enquiry</a></li>
+                <li><a href="https://www.amrita.edu" class="nav-link" target="_blank">About our Organization</a></li>
+                <li><a href="https://www.amrita.edu/news/donate-blood-save-lives/" class="nav-link">Our Previous Drives</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="user-section">
+            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+        </div>
+    </header>
+
+    <div class="container reg-container">
+        <div class="headings">
+            <h1>User Dashboard</h1>
+        </div>
+        <div class="dashboard">
+            <div class="user-details">
+                <h2>User Information</h2>
+                <div class="details">
+                    <p><strong>Name:</strong> {{ user['name'] }}</p>
+                    <p><strong>Phone Number:</strong> {{ user['phoneNum'] }}</p>
+                    <p><strong>Email ID:</strong> {{ user['email'] }}</p>
+                    <p><strong>State:</strong> {{ user['state'] }}</p>
+                    <p><strong>Aadhar ID:</strong> {{ user['aadhar'] }}</p>
+                    <p><strong>Blood Group:</strong> {{ user['bgroup'] }}</p>
+                </div>
+
+                <div class="user-preference">
+                    <h2>User Preference</h2>
+                    <form action="{{ url_for('dashboard') }}" method="post">
+                        <div class="details">
+                            <label for="desiredQuantity">Desired Quantity of Blood (Liters):</label>
+                            <input type="number" id="desiredQuantity" name="desiredQuantity" min="0" required>
+                
+                            <label for="desiredBloodGroup">Desired Blood Group:</label>
+                            <select id="desiredBloodGroup" name="desiredBloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                
+                            <label for="desiredHospital">Desired Hospital:</label>
+                            <input type="text" id="desiredHospital" name="desiredHospital" required>
+                
+                            <label for="desiredState">Desired State:</label>
+                            <input type="text" id="desiredState" name="desiredState" required>
+                
+                            <button type="submit" id="submitBtn">Submit Preference</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="donation-details">
+                <h2>Donation Information</h2>
+                <form action="{{ url_for('dashboard') }}" method="post">
+                <div class="details">
+                    <label for="hospital">Hospital for Donation:</label>
+                    <input type="text" id="hospital" name="hospital" required>
+
+                    <label for="liters">Liters for Donation:</label>
+                    <input type="number" id="liters" name="liters" min="0" required>
+
+                    <div class="questions">
+                        <h3>Donor Eligibility Questions:</h3>
+                        <div class="question">
+                            <p>Question 1: Have you traveled abroad in the last 3 months?</p>
+                            <label class="switch">
+                                <input type="checkbox" name="question1">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="question">
+                            <p>Question 2: Have you had a fever in the last week?</p>
+                            <label class="switch">
+                                <input type="checkbox" name="question2">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+            
+                        <button type="submit" id="submitBtn" >Submit</button>
+                        <p id="eligibilityStatus" style="color: red; font-weight: bold;"></p>
+                    </div>
+                 </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Blood Donation Organization</p>
+    </footer>
+</body>
+</html>

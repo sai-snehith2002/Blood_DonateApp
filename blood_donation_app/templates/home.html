@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="D:\7th Semester\Full Stack Dev Academics\Assignments\Assignment 6\blood_donation_app\static\js\script.js"></script>
+    <title>Blood Donation Website</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blood_bg.png') }}" alt="Blood Donation logo">
+                <p>Donate Blood</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                    <li><a href="{{ url_for('registration') }}" class="nav-link">Registration</a></li>
+                    <li><a href="{{ url_for('enquiry') }}" class="nav-link">Enquiry</a></li>
+                    <li><a href="https://www.amrita.edu" class="nav-link" target="_blank">About our Organization</a></li>
+                    <li><a href="https://www.amrita.edu/news/donate-blood-save-lives/" class="nav-link">Our Previous Drives</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-section dropdown">
+            <button class="dropbtn">
+              <img src="{{ url_for('static', filename='images/amrita_logo.png') }}" alt="User" class="profile-pic">Signin/Register
+            </button>
+            <div class="dropdown-content">
+              <a href="{{ url_for('login') }}">Sign In</a>
+              <a href="{{ url_for('registration') }}">Register</a>
+            </div>
+          </div>
+    </header>
+    
+<div class="container">
+    <div class="headings">
+        <h1>Blood Donation Drive</h1>
+        <p>Saving Lives and Building Hope</p>
+    </div>
+    <div class="flash-cards">
+        <div class="flash-card" id="center-card">
+            <h2>Find Donation Centers</h2>
+            <p>Discover nearby blood donation centers and save lives.</p>
+        </div>
+        <div class="flash-card" id="org-card">
+            <img src="{{ url_for('static', filename='images/amrita_logo.png') }}" alt="Amrita Vishwa Vidyapeetham, School of Engineering">
+            <h2>About Our Organization</h2>
+            <p>Learn about Amrita Vishwa Vidyapeetham, School of Engineering and its blood donation initiatives.</p>
+        </div>
+        <div class="flash-card" id="awareness-card">
+            <h2>Blood Donation Awareness</h2>
+            <p>Join our awareness campaigns and be a part of a lifesaving journey.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2023 Blood Donation Organization</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var flashCardsContainer = document.querySelector('.flash-cards');
+    var flashCards = document.querySelectorAll('.flash-card');
+    flashCards.forEach(function(card) {
+        var clone = card.cloneNode(true);
+        flashCardsContainer.appendChild(clone);
+    });
+});
+
+</script>
+</body>
+</html>
